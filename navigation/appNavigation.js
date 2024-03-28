@@ -7,9 +7,6 @@ import SignupScreen from "../screens/SignupScreen";
 import LoginScreen from "../screens/LoginScreen";
 import HomeScreen from "../screens/HomeScreen";
 import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-SplashScreen.preventAutoHideAsync();
-
 
 const Stack = createNativeStackNavigator();
 
@@ -17,14 +14,6 @@ export default function AppNavigation() {
   const [fontsLoaded] = useFonts({
     'Montserrat-Black': require('../assets/fonts/Montserrat-Black.ttf'),
   });
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded || fontError) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded, fontError]);
-  if (!fontsLoaded && !fontError) {
-    return null;
-  }
   return (
     <NavigationContainer>
       <Stack.Navigator

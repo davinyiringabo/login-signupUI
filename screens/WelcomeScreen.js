@@ -2,26 +2,13 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
-import * as SplashScreen from 'expo-splash-screen';
 
-SplashScreen.preventAutoHideAsync();
 export default function WelcomeScreen() {
-    const [fontsLoaded] = useFonts({
-        'Montserrat-Black': require('../assets/fonts/Montserrat-Black.ttf'),
-      });
   const navigation = useNavigation();
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded || fontError) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded, fontError]);
-  if (!fontsLoaded && !fontError) {
-    return null;
-  }
   return (
-    <SafeAreaView className="flex-1 bg-[#a169da]" onLayout={onLayoutRootView}>
+    <SafeAreaView className="flex-1 bg-[#a169da]">
       <View className="flex-1 flex justify-around my-10 ">
-        <Text className="text-white font-bold text-4xl text-center" style={{fontFamily: "Montserrat-Black"}}>
+        <Text className="text-white font-bold text-4xl text-center">
           Let's Get Started
         </Text>
         <View className="flex-row justify-center h-[350px] items-center">
